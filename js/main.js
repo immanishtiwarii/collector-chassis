@@ -43,7 +43,6 @@ const auctionData = [
     location: "California, 91767",
     bid: "$55,000",
   },
-
 ];
 
 // news Data
@@ -166,6 +165,30 @@ auctionData.forEach((auction) => {
   `;
   auctionGrid.appendChild(card);
 });
+
+function autoScrollCards() {
+  if (window.innerWidth > 768) return;
+
+  const grid = document.getElementById("auctionGrid");
+  const cards = document.querySelectorAll(".auction-card");
+  let index = 0;
+
+  const interval = setInterval(() => {
+    if (index < cards.length) {
+      const card = cards[index];
+      grid.scrollTo({
+        left: card.offsetLeft - grid.offsetLeft,
+        behavior: "smooth"
+      });
+      index++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 2000);
+}
+
+window.addEventListener("load", autoScrollCards);
+
 
 
 // Render News

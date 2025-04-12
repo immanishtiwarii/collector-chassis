@@ -391,6 +391,16 @@ body {
 .auctions .auction-grid .auction-card .card-content .bid span {
   color: #e0cfa9;
 }
+
+.auctions .auction-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.auctions .auction-grid {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
 @media (max-width: 768px) {
   .auctions {
     padding: 3rem 1.5rem;
@@ -416,6 +426,19 @@ body {
   }
   .auctions .auction-card .card-content .bid {
     font-size: 0.9rem;
+  }
+
+  .auctions .auction-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .auctions .auction-grid .auction-card {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
   }
 }
 @media (max-width: 480px) {
